@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   // entry point
@@ -22,6 +23,9 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
       favicon: "./src/img/favicon.png",
+    }),
+    new CopyPlugin({
+      patterns: [{ from: "_redirects" }],
     }),
   ],
   // production build

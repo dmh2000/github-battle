@@ -25,7 +25,7 @@ module.exports = {
     }),
   ],
   // production build
-  mode: "production",
+  mode: "development",
   // enable source maps
   devtool: "eval-source-map",
   devServer: {

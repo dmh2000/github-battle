@@ -12,9 +12,7 @@ import { Link } from "react-router-dom";
 import { battle } from "../utils/api";
 import Card from "./Card";
 import Loading from "./Loading";
-import ToolTipHoc from "./ToolTipHoc";
-import ToolTipRP, { ToolTipRP2 } from "./ToolTipRP";
-
+import ToolTip from "./ToolTip";
 /** Card for a player in battle */
 function PlayerCard({ player, result }) {
   return (
@@ -31,26 +29,27 @@ function PlayerCard({ player, result }) {
           {player.profile.name}
         </li>
 
-        <ToolTipHoc text="Player Location">
-          <li>
+        <li>
+          <ToolTip text="Player Location>">
             <FaCompass color="rgb(144,115,255)" size={22} />
             {player.profile.location}
-          </li>
-        </ToolTipHoc>
+          </ToolTip>
+        </li>
 
-        <ToolTipRP text="Player Company">
+        <ToolTip text="Player Company">
           <li>
             <FaBriefcase color="#795548" size={22} />
             {player.profile.company}
           </li>
-        </ToolTipRP>
+        </ToolTip>
 
-        <ToolTipRP2 text="Player Followers">
+        <ToolTip text="Player Followers">
           <li>
             <FaUser color="rgb(129,195,245)" size={22} />
             {player.profile.followers.toLocaleString()} followers
           </li>
-        </ToolTipRP2>
+        </ToolTip>
+
         <li>
           <FaUserFriends color="rgb(64,183,95)" size={22} />
           {player.profile.following.toLocaleString()} following

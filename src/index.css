@@ -36,6 +36,22 @@ li {
   background: transparent;
 }
 
+.btn-clear:hover {
+  border: solid black;
+  background: transparent;
+  border-radius: 13px;
+}
+
+.btn-clear-dark {
+  border: none;
+  background: transparent;
+}
+
+.btn-clear-dark:hover {
+  border: solid white;
+  background: transparent;
+  border-radius: 13px;
+}
 .space-between {
   justify-content: space-between;
 }
@@ -213,6 +229,11 @@ li {
   align-items: center;
   text-decoration: none;
   max-width: 200px;
+}
+
+.btn:hover {
+  background-color: blue;
+  color: white;
 }
 
 .btn-light {

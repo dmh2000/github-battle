@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import withHover from "./WithHover";
+import useHover from "../hooks/useHover";
 
 const styles = {
   container: {
@@ -11,11 +11,11 @@ const styles = {
     boxSizing: "border-box",
     position: "absolute",
     width: "160px",
-    bottom: "50%",
-    left: "50%",
+    bottom: "60%",
+    left: "80%",
     marginLeft: "-80px",
     borderRadius: "3px",
-    backgroundColor: "hsla(0, 0%, 20%, 0.1)",
+    backgroundColor: "white",
     padding: "7px",
     marginBottom: "5px",
     color: "#000",
@@ -25,17 +25,17 @@ const styles = {
   },
 };
 
-function ToolTipHoc({ text, children, hovering }) {
+export default function ToolTip({ text, children }) {
+  const [hovering, attrs] = useHover();
+  console.log(hovering);
   return (
-    <div style={styles.container}>
-      {hovering === true && <div style={styles.tooltip}>{text}</div>}
+    <div style={styles.container} {...attrs}>
+      {hovering ? <div style={styles.tooltip}>{text} </div> : null}
       {children}
     </div>
   );
 }
 
-ToolTipHoc.propTypes = {
+ToolTip.propTypes = {
   text: PropTypes.string.isRequired,
 };
-
-export default withHover(ToolTipHoc, "hovering");

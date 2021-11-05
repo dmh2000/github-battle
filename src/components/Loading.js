@@ -18,46 +18,17 @@ const styles = {
 /**
  * Loading indicator
  */
-export default class Loading extends React.Component {
-  state = {
-    content: this.props.text,
-  };
-  /**
-   * set up interval to add animatino
-   */
-  componentDidMount() {
-    const { text, speed } = this.props;
-    this.interval = window.setInterval(() => {
-      this.state.content === text + "..."
-        ? this.setState({ content: text })
-        : this.setState(({ content }) => ({ content: content + "." }));
+export default function Loading({ text = "Loading", speed = 200 }) {
+  const [content, setContent] = React.useState(text);
+
+  React.useEffect(() => {
+    const id = window.setInterval(() => {
+      setContent((content) => {
+        return content === `${text}...` ? text : `${content}.`;
+      });
     }, speed);
-  }
+    return () => window.clearInterval(id);
+  }, [text, speed]);
 
-  /**
-   * clear the interval
-   */
-  componentWillUnmount() {
-    window.clearInterval(this.interval);
-  }
-
-  render() {
-    return <p style={styles.content}>{this.state.content}</p>;
-  }
+  return <p style={styles.content}>{content}</p>;
 }
-
-/**
- * defaults
- */
-Loading.defaultProps = {
-  text: "Loading",
-  speed: 300,
-};
-
-/**
- * proptypes
- */
-Loading.propTypes = {
-  text: PropTypes.string.isRequired,
-  speed: PropTypes.number.isRequired,
-};

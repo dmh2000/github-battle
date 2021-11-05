@@ -7,51 +7,46 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import { ThemeConsumer } from "../context/theme";
+import ThemeContext from "../context/theme";
 
 /**
  * render the instructions for battle
  */
 function Instructions() {
+  const theme = React.useContext(ThemeContext);
   return (
-    <ThemeConsumer>
-      {({ theme }) => {
-        return (
-          <div className="instructions-container">
-            <h1 className="center-text header-lg">Instructions</h1>
-            <ol className="container-sm grid center-text battle-instructions">
-              <li>
-                <h3 className="header-sm">Enter Two Github Users</h3>
-                <FaUserFriends
-                  className={`bg-${theme}`}
-                  color="rgb(255,191,116)"
-                  size={140}
-                  style={{ padding: 40 }}
-                />
-              </li>
-              <li>
-                <h3 className="header-sm">Battle</h3>
-                <FaFighterJet
-                  className={`bg-${theme}`}
-                  color="#727272"
-                  size={140}
-                  style={{ padding: 40 }}
-                />
-              </li>
-              <li>
-                <h3 className="header-sm">See the winners</h3>
-                <FaTrophy
-                  className={`bg-${theme}`}
-                  color="rgb(255,215,0)"
-                  size={140}
-                  style={{ padding: 40 }}
-                />
-              </li>
-            </ol>
-          </div>
-        );
-      }}
-    </ThemeConsumer>
+    <div className="instructions-container">
+      <h1 className="center-text header-lg">Instructions</h1>
+      <ol className="container-sm grid center-text battle-instructions">
+        <li>
+          <h3 className="header-sm">Enter Two Github Users</h3>
+          <FaUserFriends
+            className={`bg-${theme}`}
+            color="rgb(255,191,116)"
+            size={140}
+            style={{ padding: 40 }}
+          />
+        </li>
+        <li>
+          <h3 className="header-sm">Battle</h3>
+          <FaFighterJet
+            className={`bg-${theme}`}
+            color="#727272"
+            size={140}
+            style={{ padding: 40 }}
+          />
+        </li>
+        <li>
+          <h3 className="header-sm">See the winners</h3>
+          <FaTrophy
+            className={`bg-${theme}`}
+            color="rgb(255,215,0)"
+            size={140}
+            style={{ padding: 40 }}
+          />
+        </li>
+      </ol>
+    </div>
   );
 }
 
@@ -84,7 +79,7 @@ class PlayerInput extends React.Component {
 
   render() {
     return (
-      <ThemeConsumer>
+      <ThemeContext.Consumer>
         {({ theme }) => {
           return (
             <form className="column player" onSubmit={this.handleSubmit}>
@@ -112,7 +107,7 @@ class PlayerInput extends React.Component {
             </form>
           );
         }}
-      </ThemeConsumer>
+      </ThemeContext.Consumer>
     );
   }
 }
@@ -127,7 +122,7 @@ PlayerInput.propTypes = {
  */
 function PlayerPreview({ username, onReset, label }) {
   return (
-    <ThemeConsumer>
+    <ThemeContext.Consumer>
       {({ theme }) => {
         return (
           <div className="column player">
@@ -150,7 +145,7 @@ function PlayerPreview({ username, onReset, label }) {
           </div>
         );
       }}
-    </ThemeConsumer>
+    </ThemeContext.Consumer>
   );
 }
 

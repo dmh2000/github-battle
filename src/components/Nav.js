@@ -1,13 +1,13 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { ThemeConsumer } from "../context/theme";
+import ThemeContext from "../context/theme";
 
 const activeStyle = {
   color: "red",
 };
 export default function Nav() {
   return (
-    <ThemeConsumer>
+    <ThemeContext.Consumer>
       {/* children render prop*/}
       {({ theme, toggleTheme }) => (
         <nav className="row space-between">
@@ -43,6 +43,6 @@ export default function Nav() {
           </button>
         </nav>
       )}
-    </ThemeConsumer>
+    </ThemeContext.Consumer>
   );
 }
